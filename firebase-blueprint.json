@@ -1,0 +1,62 @@
+{
+  "entities": {
+    "LogEntry": {
+      "title": "Film and Series Log Entry",
+      "description": "A record of a movie or TV show watched by the user.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "The UID of the user who logged this." },
+        "name": { "type": "string", "description": "Title of the content." },
+        "thumbnail_url": { "type": "string", "description": "URL to the poster image." },
+        "type": { "type": "string", "enum": ["film", "series"] },
+        "rating": { "type": "number" },
+        "company": { "type": "string", "description": "Studio or network." },
+        "watched_on": { "type": "string", "description": "Platform like Netflix, Cinema, etc." },
+        "date_watched": { "type": "string", "format": "date-time" },
+        "genres": { "type": "array", "items": { "type": "string" } },
+        "ai_tags": { "type": "array", "items": { "type": "string" } },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "name", "type", "date_watched", "createdAt", "updatedAt"]
+    },
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Additional user data including preferences and AI-generated insights.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "stats": {
+          "type": "object",
+          "properties": {
+            "totalWatched": { "type": "number" },
+            "avgRating": { "type": "number" }
+          }
+        },
+        "insights": {
+          "type": "object",
+          "properties": {
+            "dominantGenre": { "type": "string" },
+            "favStudio": { "type": "string" },
+            "moodMatch": { "type": "array", "items": { "type": "string" } },
+            "tasteProfile": { "type": "string" }
+          }
+        },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/logs/{logId}": {
+      "schema": "LogEntry",
+      "description": "Collection of watch logs."
+    },
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile and metadata."
+    }
+  }
+}

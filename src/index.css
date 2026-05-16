@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
+
+  --color-brand-600: #6366f1;
+  --color-brand-500: #818cf8;
+  --color-vibrant-pink: #f472b6;
+  --color-vibrant-cyan: #22d3ee;
+  --color-vibrant-amber: #fbbf24;
+  --color-vibrant-purple: #a855f7;
+  --color-vibrant-green: #4ade80;
+  --color-vibrant-cyan: #22d3ee;
+  --color-vibrant-pink: #f472b6;
+  --color-vibrant-indigo: #6366f1;
+
+  --animate-gradient-x: gradient-x 15s linear infinite;
+  --animate-pulse-slow: pulse-slow 8s infinite ease-in-out;
+  --animate-float: float 6s infinite ease-in-out;
+
+  @keyframes gradient-x {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 0.35; transform: scale(1.05); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+}
+
+.text-gradient-vibrant {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-500;
+}
+
+.text-gradient-cyan {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-emerald-400 to-indigo-400;
+}
+
+.text-gradient-rainbow {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-red-500 via-amber-500 via-emerald-500 via-cyan-500 to-indigo-500;
+}
+
+.mesh-gradient-vibrant {
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(244, 114, 182, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(34, 211, 238, 0.05) 0%, transparent 60%);
+}
+
+@layer base {
+  body {
+    @apply bg-[#030305] text-slate-100 antialiased font-sans transition-colors duration-700;
+  }
+}
+
+/* Custom Utilities for Frosted Glass */
+.glass {
+  @apply backdrop-blur-md bg-white/5 border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)];
+}
+
+.glass-xl {
+  @apply backdrop-blur-xl bg-white/10 border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.5)];
+}
+
+.glass-dark {
+  @apply backdrop-blur-2xl bg-black/60 border border-white/5;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-tr from-indigo-400 via-purple-400 to-pink-400;
+}
+
+.text-gradient-vibrant {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-500;
+}
+
+.text-gradient-rainbow {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-purple-500 via-indigo-500 via-cyan-500 to-green-400 bg-[length:200%_auto] animate-gradient-x;
+}
+
+.mesh-gradient {
+  background: 
+    radial-gradient(circle at 0% 0%, rgba(99, 102, 241, 0.2) 0%, transparent 40%),
+    radial-gradient(circle at 100% 100%, rgba(168, 85, 247, 0.2) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+}
+
+.mesh-gradient-vibrant {
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(34, 211, 238, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(244, 114, 182, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 50% 10%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(244, 114, 182, 0.12) 0%, transparent 40%);
+}

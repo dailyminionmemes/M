@@ -1,0 +1,6 @@
+{
+  "name": "CineLog Elite AI",
+  "description": "Premium industrial-grade AI cinema engine with neural enrichment and executive tracking capabilities.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
